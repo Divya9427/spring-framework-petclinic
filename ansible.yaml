@@ -1,0 +1,18 @@
+---
+- hosts: tomcat-servers
+  remote_user: root
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: Copying the jar file
+      copy:
+        src: /var/lib/jenkins/workspace/wardbdeploy/target/App42PaaS-Java-MySQL-Sample-0.0.1-SNAPSHOT.war
+        dest: /usr/share/tomcat/webapps/App42PaaS-Java-MySQL-Sample-0.0.1-SNAPSHOT.war
+   # - name: Coptying the sh file
+    #  copy:
+     #   src: newdeploy.sh
+      #  dest: /root/newdeploy.sh
+       # mode: 0777
+    #- name: Deployment
+     # command: sh /root/newdeploy.sh
